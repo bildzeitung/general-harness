@@ -1,0 +1,30 @@
+# Copy this file to terraform.tfvars and fill in your values.
+# terraform.tfvars is git-ignored; never commit real credentials.
+
+# --- OCI Authentication ---
+tenancy_ocid     = "ocid1.tenancy.oc1..aaaaaaaaXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+user_ocid        = "ocid1.user.oc1..aaaaaaaaXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+fingerprint      = "xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx"
+private_key_path = "~/.oci/oci_api_key.pem"
+region           = "us-ashburn-1"
+
+# --- Compartment ---
+compartment_ocid = "ocid1.compartment.oc1..aaaaaaaaXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+
+# --- Availability Domain ---
+# Find yours with:
+#   oci iam availability-domain list --tenancy-id <tenancy_ocid>
+# The value looks like "ABC:US-ASHBURN-AD-1" (region-specific prefix + AD number).
+availability_domain = "ABC:US-ASHBURN-AD-1"
+
+# --- Resource naming ---
+prefix = "dolt"
+
+# --- Dolt SQL password ---
+dolt_db_password = "changeme"
+
+# --- Dolt ingress CIDR (optional) ---
+# Restrict port 3306 access to a specific IP or CIDR.
+# Default is 0.0.0.0/0 (open). Example: your current public IP.
+#   curl -s https://checkip.amazonaws.com  # find your public IP
+# dolt_ingress_cidr = "203.0.113.5/32"

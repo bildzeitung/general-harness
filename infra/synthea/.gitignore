@@ -1,0 +1,6 @@
+# Synthea-generated output — excluded from version control.
+output/
+
+# Synthea temporary and build artifacts
+*.log
+tmp/

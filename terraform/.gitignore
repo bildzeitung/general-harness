@@ -1,0 +1,20 @@
+# Terraform local state
+terraform.tfstate
+terraform.tfstate.backup
+terraform.tfstate.d/
+
+# Terraform working directory (downloaded providers, modules, etc.)
+.terraform/
+.terraform.lock.hcl
+
+# Variable files containing secrets — never commit these.
+# Note: terraform.tfvars.example ends in .example, NOT .tfvars, so it is
+# intentionally NOT matched by this pattern and will be tracked by git.
+*.tfvars
+
+# Plan files (may contain sensitive values in plaintext)
+*.tfplan
+
+# SSH / OCI key material
+*.pem
+*.pub

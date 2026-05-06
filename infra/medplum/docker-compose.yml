@@ -1,0 +1,55 @@
+version: "3.9"
+
+# Local Medplum FHIR server stack for integration testing.
+# Image tags are pinned to a stable release — do not use 'latest'.
+# Credentials and config are sourced from medplum.env (--env-file flag).
+#
+# Usage:
+#   docker compose --env-file medplum.env up -d
+#   docker compose --env-file medplum.env down
+
+services:
+  medplum-postgres:
+    image: postgres:16.3-alpine
+    container_name: medplum-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${MEDPLUM_DATABASE_NAME}
+      POSTGRES_USER: ${MEDPLUM_DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${MEDPLUM_DATABASE_PASSWORD}
+    volumes:
+      - medplum-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${MEDPLUM_DATABASE_USERNAME} -d ${MEDPLUM_DATABASE_NAME}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  medplum-server:
+    image: medplum/medplum-server:3.2.9
+    container_name: medplum-server
+    restart: unless-stopped
+    depends_on:
+      medplum-postgres:
+        condition: service_healthy
+    ports:
+      - "${MEDPLUM_PORT}:8103"
+    environment:
+      - NODE_ENV=production
+      - MEDPLUM_PORT=${MEDPLUM_PORT}
+      - MEDPLUM_DATABASE_HOST=${MEDPLUM_DATABASE_HOST}
+      - MEDPLUM_DATABASE_PORT=${MEDPLUM_DATABASE_PORT}
+      - MEDPLUM_DATABASE_NAME=${MEDPLUM_DATABASE_NAME}
+      - MEDPLUM_DATABASE_USERNAME=${MEDPLUM_DATABASE_USERNAME}
+      - MEDPLUM_DATABASE_PASSWORD=${MEDPLUM_DATABASE_PASSWORD}
+      - MEDPLUM_CLIENT_ID=${MEDPLUM_CLIENT_ID}
+      - MEDPLUM_CLIENT_SECRET=${MEDPLUM_CLIENT_SECRET}
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:8103/healthz || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+
+volumes:
+  medplum-postgres-data:

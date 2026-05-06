@@ -1,0 +1,67 @@
+{
+  "spinnerTipsEnabled": false,
+  "hooks": {
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "command": "bd prime",
+            "type": "command"
+          }
+        ],
+        "matcher": ""
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "command": "if [[ -f ./session-start.sh ]] \u0026\u0026 { [[ ! -d .beads ]] || ! bd dolt remote list 2\u003e/dev/null | grep -q \"^origin\"; }; then ./init-machine.sh; fi",
+            "statusMessage": "Checking machine initialization...",
+            "type": "command"
+          },
+          {
+            "command": "if [[ -f ./session-start.sh ]]; then ./session-start.sh; fi",
+            "statusMessage": "Running session start...",
+            "type": "command"
+          },
+          {
+            "command": "bd prime",
+            "type": "command"
+          }
+        ],
+        "matcher": ""
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Bash(ls **)",
+      "Read(/tmp/**)",
+      "Write(/tmp/**)",
+      "Edit(/tmp/**)",
+      "Bash(~/*/intrahealth/app/**)",
+      "Read(~/*/intrahealth/app/**)",
+      "Bash(~/*/intrahealth/worktrees/**)",
+      "Edit(~/*/intrahealth/worktrees/**)",
+      "Write(~/*/intrahealth/worktrees/**)",
+      "Read(~/*/intrahealth/worktrees/**)",
+      "Bash(rtk *)",
+      "Bash(bd *)",
+      "Bash(bd)",
+      "Bash(curl *)",
+      "Bash(docker *)",
+      "Bash(cd * && git *)",
+      "Bash(git -C *)",
+      "WebSearch"
+    ]
+  },
+  "statusLine": {
+    "command": "bash /home/dmklein/PROJECTS/intrahealth/harness/.claude/statusline-command.sh",
+    "type": "command"
+  },
+  "subagentStatusLine": {
+    "command": "bash /home/dmklein/PROJECTS/intrahealth/harness/.claude/subagent-statusline.sh",
+    "type": "command"
+  }
+}
