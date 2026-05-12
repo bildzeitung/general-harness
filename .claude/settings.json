@@ -46,6 +46,12 @@
       "Edit(~/*/intrahealth/worktrees/**)",
       "Write(~/*/intrahealth/worktrees/**)",
       "Read(~/*/intrahealth/worktrees/**)",
+      "Bash(/home/dmklein/HARNESS/harness/.claude/worktrees/**)",
+      "Read(/home/dmklein/HARNESS/harness/.claude/worktrees/**)",
+      "Write(/home/dmklein/HARNESS/harness/.claude/worktrees/**)",
+      "Edit(/home/dmklein/HARNESS/harness/.claude/worktrees/**)",
+      "EnterWorktree",
+      "ExitWorktree",
       "Bash(rtk *)",
       "Bash(bd *)",
       "Bash(bd)",
@@ -55,6 +61,9 @@
       "Bash(git -C *)",
       "WebSearch"
     ]
+  },
+  "worktree": {
+    "baseRef": "head"
   },
   "statusLine": {
     "command": "bash /home/dmklein/PROJECTS/intrahealth/harness/.claude/statusline-command.sh",
