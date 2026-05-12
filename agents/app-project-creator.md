@@ -52,6 +52,11 @@ For the `terraform` commands, override the `prefix` variable using the project n
 | BEADS_DOLT_USER | root |
 | BEADS_DOLT_PASSWORD | use `dolt_db_password` found in `./terraform/terraform.tfvars` |
 
+* commit the `.envrc` file:
+  ```bash
+  git add .envrc && git commit -m "Add .envrc for project configuration"
+  ```
+
 ## Step 4 — Project initialization
 
 * run `direnv allow .`
