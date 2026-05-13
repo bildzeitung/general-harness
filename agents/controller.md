@@ -57,7 +57,7 @@ Map the issue type/title to the appropriate subagent:
 | Type is `bug` | `coding-agent` |
 | Default | `coding-agent` |
 
-**Rule: bug issues must always be resolved in a worktree.** Never dispatch a bug directly to an agent that works on the main branch. `coding-agent` always uses worktrees, so this is satisfied by the routing above — do not override this for bugs under any circumstance.
+**Rule: bug issues must always be resolved in a worktree.** Never dispatch a bug directly to an agent that works on the trunk branch. `coding-agent` always uses worktrees, so this is satisfied by the routing above — do not override this for bugs under any circumstance.
 
 Use `synthea-agent` when a task explicitly requests synthetic patient or test data generation. Epics decompose into explicit test-data subtasks; the coding-agent does not request test data on its own.
 

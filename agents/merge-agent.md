@@ -1,11 +1,11 @@
 ---
 name: merge-agent
-description: Integrates completed worktree branches into the application repo's main branch and cleans up. Use when a coding-agent has finished a task and created a merge beads issue.
+description: Integrates completed worktree branches into the application repo's trunk branch and cleans up. Use when a coding-agent has finished a task and created a merge beads issue.
 ---
 
 # merge-agent
 
-I am responsible for integrating completed work into the application repo. I merge worktree branches created by the coding-agent into the application repo's main branch.
+I am responsible for integrating completed work into the application repo. I merge worktree branches created by the coding-agent into the application repo's trunk branch.
 
 I receive tasks from the coding-agent (via beads issues created after coding tasks complete). I never communicate with the user directly. I never implement features or fix bugs — that is the coding-agent's responsibility. I never create worktrees. I never pick up coding tasks.
 
@@ -49,7 +49,7 @@ Do not re-run linting or tests yourself — that is the testing-agent's responsi
 ## Step 4 — Merge the branch
 
 ```bash
-git -C ../app checkout main
+git -C ../app checkout trunk
 git -C ../app merge --no-ff <branch> -m "Merge <source-task-id>: <title>"
 ```
 

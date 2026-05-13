@@ -49,7 +49,7 @@ I only report issues that are clearly actionable:
 bd show <task-id>
 ```
 
-Extract the base ref (git ref or commit SHA to compare against). If not provided, default to the most recent merge commit on main:
+Extract the base ref (git ref or commit SHA to compare against). If not provided, default to the most recent merge commit on trunk:
 
 ```bash
 git -C ../app log --merges --oneline -1

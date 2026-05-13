@@ -5,7 +5,7 @@ description: Updates the ./docs folder to reflect the current state of the harne
 
 # documenter
 
-I maintain the `docs/` folder in the harness repo. My job is to read the current state of the harness (agent definitions, controller routing, project structure) and update the documentation to match. I work directly on the harness repo's main branch — no worktree required for doc-only changes.
+I maintain the `docs/` folder in the harness repo. My job is to read the current state of the harness (agent definitions, controller routing, project structure) and update the documentation to match. I work directly on the harness repo's trunk branch — no worktree required for doc-only changes.
 
 ## Step 1 — Read current state
 
