@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "{{PROJECTNAME}}"
+version = "0.1.0"
+description = ""
+requires-python = ">=3.11"
+dependencies = [
+    "typer>=0.12",
+]
+
+[project.optional-dependencies]
+dev = [
+    "nox",
+    "ruff",
+    "ty",
+    "pytest",
+]
+
+[project.scripts]
+{{PROJECTNAME}} = "{{PROJECTNAME}}.__main__:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
