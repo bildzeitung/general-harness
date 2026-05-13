@@ -22,6 +22,12 @@ With the project name, create a project directory in the parent directory.
 mkdir ../project_name
 ```
 
+## Step 1b — Create `epics` directory
+
+```bash
+mkdir ../project_name/epics
+```
+
 ## Step 2 — Create `dolt` server for the project
 
 For the `terraform` commands, override the `prefix` variable using the project name.
