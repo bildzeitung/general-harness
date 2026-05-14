@@ -15,10 +15,8 @@ Make sure you have installed:
 
 ## Creating the application
 
+Use the `app-project-creator` agent to create a new project.
 
 ## Harness Workflow for App Feature Development
 
-1. Author a feature description, in Markdown, in `epics/`
-2. Run `add-epic-from-dir.sh`, with a title and path to feature description file
-3. In a Claude session, run the planner agent
-4. When the ticket breakdown is satisfactory, run the controller agent; iterate with the planner as needed
+TBD
