@@ -85,6 +85,17 @@ bd close <id>         # Complete work
 <!-- END BEADS INTEGRATION -->
 
 
+## Project Context Check (MANDATORY)
+
+**Before taking on any task that touches project code** (anything in `../app` or a project-specific worktree), you must first establish which project you are working on.
+
+**Steps:**
+1. Check `bd remember list` or recall from the current session whether a project has already been identified.
+2. If the current project is **not known**, stop and ask the user: "Which project are we working on?"
+3. Confirm the project before proceeding with any code exploration, planning, or implementation.
+
+This harness manages multiple projects. Acting on the wrong project context causes real harm. Never assume — always verify.
+
 ## Build & Test
 
 _Add your build and test commands here_
